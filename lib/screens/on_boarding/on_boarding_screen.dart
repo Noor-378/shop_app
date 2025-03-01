@@ -7,8 +7,12 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: PageView(
-        
+      body: Column(
+        children: [
+          // PageView.builder(itemBuilder: (context, index) {}
+          // )
+          Image(image: AssetImage("assets/images/onboard_1.png",),),
+        ],
       ),
     );
   }
