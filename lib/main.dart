@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
 void main(){
   runApp(MyApp());
 }
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
       ),
-      // home: ,
+      home: OnBoardingScreen(),
     );
   }
 }
