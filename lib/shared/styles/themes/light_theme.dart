@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
+  useMaterial3: false,
   primarySwatch: mainColor,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(

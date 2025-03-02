@@ -3,22 +3,25 @@ import 'package:flutter/services.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
 ThemeData darkTheme = ThemeData(
+  useMaterial3: false,
   primarySwatch: mainColor,
   scaffoldBackgroundColor: darkModeBachgroundColor,
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
+    backgroundColor: darkModeBachgroundColor,
+    elevation: 0.0,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: darkModeBachgroundColor,
       statusBarIconBrightness: Brightness.light,
     ),
-    backgroundColor: darkModeBachgroundColor,
-    elevation: 0.0,
     titleTextStyle: TextStyle(
       color: Colors.white,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
     ),
-    iconTheme: IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(
+      color: Colors.white,
+    ),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
