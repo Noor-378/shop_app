@@ -18,11 +18,20 @@ class OnBoardingScreen extends StatelessWidget {
                 itemBuilder: (context, index) => BuildBoardingItem(),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(
+              height: 40,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Indicator",
+                ),
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                  ),
                 ),
               ],
             ),
