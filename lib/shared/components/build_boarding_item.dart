@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/boarding_model.dart';
 
 class BuildBoardingItem extends StatelessWidget {
-  const BuildBoardingItem({super.key});
-
+  const BuildBoardingItem({super.key, required this.model});
+  final BoardingModel model;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,17 +12,29 @@ class BuildBoardingItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image(image: AssetImage("assets/images/onboard_1.png")),
+            child: Image(
+              image: AssetImage(
+                model.image,
+              ),
+            ),
           ),
-          SizedBox(height: 30),
+          SizedBox(
+            height: 30,
+          ),
           Text(
-            "Screen title",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            model.title,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           SizedBox(height: 15),
           Text(
-            "Screen Body",
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            model.body,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/boarding_model.dart';
 import 'package:shop_app/shared/components/build_boarding_item.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -6,6 +7,23 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<BoardingModel> boarding = [
+      BoardingModel(
+        image: "assets/images/onboard_1.png",
+        title: "title1",
+        body: "body1",
+      ),
+      BoardingModel(
+        image: "assets/images/onboard_2.png",
+        title: "title2",
+        body: "body2",
+      ),
+      BoardingModel(
+        image: "assets/images/onboard_3.png",
+        title: "title3",
+        body: "body3",
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -13,8 +31,9 @@ class OnBoardingScreen extends StatelessWidget {
           Expanded(
             child: PageView.builder(
               physics: BouncingScrollPhysics(),
-              itemCount: 3,
-              itemBuilder: (context, index) => BuildBoardingItem(),
+              itemCount: boarding.length,
+              itemBuilder: (context, index) =>
+                  BuildBoardingItem(model: boarding[index]),
             ),
           ),
           SizedBox(
