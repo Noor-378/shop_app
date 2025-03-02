@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/shared/components/build_boarding_item.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -7,12 +8,26 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          // PageView.builder(itemBuilder: (context, index) {}
-          // )
-          Image(image: AssetImage("assets/images/onboard_1.png",),),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) => BuildBoardingItem(),
+              ),
+            ),
+            SizedBox(height: 40),
+            Row(
+              children: [
+                Text(
+                  "Indicator",
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
