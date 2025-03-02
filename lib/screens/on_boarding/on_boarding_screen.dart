@@ -8,20 +8,21 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) => BuildBoardingItem(),
-              ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: 3,
+              itemBuilder: (context, index) => BuildBoardingItem(),
             ),
-            SizedBox(
-              height: 40,
-            ),
-            Row(
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -35,8 +36,8 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
