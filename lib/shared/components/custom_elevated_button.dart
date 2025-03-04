@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/shared/styles/colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -17,6 +18,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        backgroundColor: mainColor,
         fixedSize: Size(
           width,
           height,
