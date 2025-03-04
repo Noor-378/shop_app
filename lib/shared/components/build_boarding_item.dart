@@ -18,9 +18,6 @@ class BuildBoardingItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 30,
-          ),
           Text(
             model.title,
             style: TextStyle(

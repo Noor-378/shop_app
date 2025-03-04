@@ -1,35 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/boarding_model.dart';
+import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/shared/components/build_boarding_item.dart';
+import 'package:shop_app/shared/components/custom_text_button.dart';
+import 'package:shop_app/shared/cubit/cubit/cubit.dart';
+import 'package:shop_app/shared/styles/colors.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
   @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  var boardController = PageController();
+  bool isLast = false;
+  @override
   Widget build(BuildContext context) {
-    List<BoardingModel> boarding = [
-      BoardingModel(
-        image: "assets/images/onboarding_1.png",
-        title: "title1",
-        body: "body1",
-      ),
-      BoardingModel(
-        image: "assets/images/onboarding_2.png",
-        title: "title2",
-        body: "body2",
-      ),
-      BoardingModel(
-        image: "assets/images/onboarding_3.png",
-        title: "title3",
-        body: "body3",
-      ),
-    ];
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actionsPadding: EdgeInsets.only(right: 20),
+        actions: [
+          CustomTextButton(
+            onPressed: () {
+              if (isLast) {
+                AppCubit.get(context).navigateAndFinish(
+                  context,
+                  LoginScreen(),
+                );
+              } else {
+                boardController.jumpToPage(boarding.length - 1);
+              }
+            },
+            text: "Skip",
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
             child: PageView.builder(
+              onPageChanged: (int index) {
+                if (index == boarding.length - 1) {
+                  setState(() {
+                    isLast = true;
+                  });
+                } else {
+                  setState(() {
+                    isLast = false;
+                  });
+                }
+              },
+              controller: boardController,
               physics: BouncingScrollPhysics(),
               itemCount: boarding.length,
               itemBuilder: (context, index) =>
@@ -44,14 +68,33 @@ class OnBoardingScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Indicator",
-                ),
-                FloatingActionButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.arrow_forward_ios,
+                SmoothPageIndicator(
+                  effect: ExpandingDotsEffect(
+                    activeDotColor: mainColor,
+                    expansionFactor: 3,
+                    spacing: 5,
+                    dotHeight: 10,
                   ),
+                  controller: boardController,
+                  count: boarding.length,
+                ),
+                CustomTextButton(
+                  onPressed: () {
+                    if (isLast) {
+                      AppCubit.get(context).navigateAndFinish(
+                        context,
+                        LoginScreen(),
+                      );
+                    } else {
+                      boardController.nextPage(
+                        duration: Duration(
+                          milliseconds: 750,
+                        ),
+                        curve: Curves.ease,
+                      );
+                    }
+                  },
+                  text: isLast ? "Get Started" : "Next",
                 ),
               ],
             ),
