@@ -43,7 +43,6 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    fit: BoxFit.cover,
                     "assets/images/login2.png",
                   ),
                   CustomFormField(
