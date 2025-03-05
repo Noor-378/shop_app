@@ -41,14 +41,14 @@ class LoginScreen extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  "Log",
+                                  "LOG",
                                   style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
                                 Text(
-                                  "In",
+                                  "IN",
                                   style: TextStyle(
                                     color: mainColor,
                                     fontSize: 30,

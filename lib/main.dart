@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
@@ -9,8 +8,9 @@ import 'package:shop_app/shared/styles/themes/dark_theme.dart';
 import 'package:shop_app/shared/styles/themes/light_theme.dart';
 
 void main() {
-  DioHelper.init();
   Bloc.observer = MyBlocObserver();
+  DioHelper.init();
+
   runApp(MyApp());
 }
 
