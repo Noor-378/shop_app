@@ -79,6 +79,8 @@ class LoginScreen extends StatelessWidget {
                               height: 20,
                             ),
                             CustomFormField(
+                              obscureText: LoginCubit.get(context).isObscure,
+
                               onSubmite: (value) {
                                 if (formKey.currentState!.validate()) {
                                   LoginCubit.get(context).userLogin(
@@ -86,8 +88,10 @@ class LoginScreen extends StatelessWidget {
                                       password: passwordController.text);
                                 }
                               },
-                              suffixIcon: Icons.visibility_outlined,
-                              suffixOnPressed: () {},
+                              suffixIcon: LoginCubit.get(context).suffix,
+                              suffixOnPressed: () {
+                                LoginCubit.get(context).changePasswordVisibility();
+                              },
                               hint: "Enter You'r Password",
                               type: TextInputType.visiblePassword,
                               controller: passwordController,

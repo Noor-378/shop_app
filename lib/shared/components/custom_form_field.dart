@@ -13,6 +13,7 @@ class CustomFormField extends StatelessWidget {
     this.suffixOnPressed,
     this.onSubmite,
     this.keyboardButton = TextInputAction.done,
+    this.obscureText = false
   });
   final TextInputType type;
   final TextEditingController controller;
@@ -24,10 +25,12 @@ class CustomFormField extends StatelessWidget {
   final void Function()? suffixOnPressed;
   final void Function(String)? onSubmite;
   final TextInputAction  keyboardButton;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       textInputAction: keyboardButton,
       cursorOpacityAnimates: true,
       onFieldSubmitted: onSubmite,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/screens/login_screen/cubit/login_state.dart';
 import 'package:shop_app/shared/network/end_points.dart';
@@ -26,5 +27,15 @@ class LoginCubit extends Cubit<LoginState> {
         LoginErrorState(error.toString()),
       );
     });
+  }
+
+  IconData suffix = Icons.visibility_outlined;
+  bool isObscure = true;
+  void changePasswordVisibility() {
+    isObscure = !isObscure;
+    suffix =
+        isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined;
+
+    emit(ChangePasswordVisibilityState());
   }
 }
