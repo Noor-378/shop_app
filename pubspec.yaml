@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.0
   smooth_page_indicator: ^1.2.1
+  lottie:
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -26,6 +27,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/animation/loading.json
 
 fonts:
   - family: Popping
