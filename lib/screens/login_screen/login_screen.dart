@@ -61,6 +61,7 @@ class LoginScreen extends StatelessWidget {
                               "assets/images/login.png",
                             ),
                             CustomFormField(
+                              keyboardButton: TextInputAction.next,
                               hint: "Enter You'r Email",
                               type: TextInputType.text,
                               controller: emailController,
@@ -78,6 +79,13 @@ class LoginScreen extends StatelessWidget {
                               height: 20,
                             ),
                             CustomFormField(
+                              onSubmite: (value) {
+                                if (formKey.currentState!.validate()) {
+                                  LoginCubit.get(context).userLogin(
+                                      email: emailController.text,
+                                      password: passwordController.text);
+                                }
+                              },
                               suffixIcon: Icons.visibility_outlined,
                               suffixOnPressed: () {},
                               hint: "Enter You'r Password",
