@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/boarding_model.dart';
+import 'package:shop_app/models/boarding_model/boarding_model.dart';
 
 class BuildBoardingItem extends StatelessWidget {
   const BuildBoardingItem({super.key, required this.model});

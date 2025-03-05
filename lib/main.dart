@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         title: "Simple Shop App",
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        darkTheme: darkTheme,
+        // darkTheme: darkTheme,
         home: OnBoardingScreen(),
       ),
     );

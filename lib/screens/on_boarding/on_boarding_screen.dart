@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/boarding_model.dart';
+import 'package:shop_app/models/boarding_model/boarding_model.dart';
 import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/shared/components/build_boarding_item.dart';
 import 'package:shop_app/shared/components/custom_text_button.dart';
