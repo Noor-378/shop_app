@@ -80,17 +80,18 @@ class LoginScreen extends StatelessWidget {
                             ),
                             CustomFormField(
                               obscureText: LoginCubit.get(context).isObscure,
-
                               onSubmite: (value) {
                                 if (formKey.currentState!.validate()) {
                                   LoginCubit.get(context).userLogin(
-                                      email: emailController.text,
-                                      password: passwordController.text);
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
                                 }
                               },
                               suffixIcon: LoginCubit.get(context).suffix,
                               suffixOnPressed: () {
-                                LoginCubit.get(context).changePasswordVisibility();
+                                LoginCubit.get(context)
+                                    .changePasswordVisibility();
                               },
                               hint: "Enter You'r Password",
                               type: TextInputType.visiblePassword,
@@ -108,31 +109,21 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               height: 30,
                             ),
-                            CustomElevatedButton(
-                              height: 45,
-                              onPressed: () {
-                                if (formKey.currentState!.validate()) {
-                                  LoginCubit.get(context).userLogin(
-                                      email: emailController.text,
-                                      password: passwordController.text);
-                                }
-                              },
-                              color: state is! LoginLoadingState
-                                  ? mainColor
-                                  : Colors.grey,
-                              child: state is! LoginLoadingState
-                                  ? Text(
-                                      "LOGIN",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    )
-                                  : Lottie.asset(
-                                      "assets/animation/loading.json",
-                                      fit: BoxFit.cover,
-                                      width: 75,
-                                    ),
-                            ),
+                            state is! LoginLoadingState
+                                ? CustomElevatedButton(
+                                    height: 45,
+                                    onPressed: () {
+                                      if (formKey.currentState!.validate()) {
+                                        LoginCubit.get(context).userLogin(
+                                            email: emailController.text,
+                                            password: passwordController.text);
+                                      }
+                                    },
+                                    text: "LOGIN",
+                                  )
+                                : CircularProgressIndicator(
+                                    backgroundColor: Colors.grey.shade300,
+                                  ),
                           ],
                         ),
                       ),
