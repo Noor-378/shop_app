@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
+    var formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -31,87 +32,97 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "Log",
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                "In",
-                                style: TextStyle(
-                                  color: mainColor,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              )
-                            ],
-                          ),
-                          Image.asset(
-                            "assets/images/login.png",
-                          ),
-                          CustomFormField(
-                            hint: "Enter You'r Email",
-                            type: TextInputType.text,
-                            controller: emailController,
-                            validate: (value) {
-                              if (value!.isEmpty) {
-                                return "please enter your email address";
-                              } else {
-                                return null;
-                              }
-                            },
-                            label: "Password",
-                            icon: Icons.email_outlined,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          CustomFormField(
-                            suffixIcon: Icons.visibility_outlined,
-                            suffixOnPressed: () {},
-                            hint: "Enter You'r Password",
-                            type: TextInputType.visiblePassword,
-                            controller: passwordController,
-                            validate: (value) {
-                              if (value!.isEmpty) {
-                                return "password is too short";
-                              } else {
-                                return null;
-                              }
-                            },
-                            label: "Password",
-                            icon: Icons.lock_outline,
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          CustomElevatedButton(
-                            height: 45,
-                            onPressed: () {},
-                            color: state is! LoginLoadingState
-                                ? mainColor
-                                : Colors.grey,
-                            child: state is! LoginLoadingState
-                                ? Text(
-                                    "LOGIN",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  )
-                                : Lottie.asset(
-                                    "assets/animation/loading.json",
-                                    fit: BoxFit.cover,
-                                    width: 75,
+                      child: Form(
+                        key: formKey,
+                        autovalidateMode: AutovalidateMode.onUnfocus,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Log",
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w900,
                                   ),
-                          ),
-                        ],
+                                ),
+                                Text(
+                                  "In",
+                                  style: TextStyle(
+                                    color: mainColor,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Image.asset(
+                              "assets/images/login.png",
+                            ),
+                            CustomFormField(
+                              hint: "Enter You'r Email",
+                              type: TextInputType.text,
+                              controller: emailController,
+                              validate: (value) {
+                                if (value!.isEmpty) {
+                                  return "please enter your email address";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              label: "Email",
+                              icon: Icons.email_outlined,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            CustomFormField(
+                              suffixIcon: Icons.visibility_outlined,
+                              suffixOnPressed: () {},
+                              hint: "Enter You'r Password",
+                              type: TextInputType.visiblePassword,
+                              controller: passwordController,
+                              validate: (value) {
+                                if (value!.isEmpty) {
+                                  return "password is too short";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              label: "Password",
+                              icon: Icons.lock_outline,
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            CustomElevatedButton(
+                              height: 45,
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  LoginCubit.get(context).userLogin(
+                                      email: emailController.text,
+                                      password: passwordController.text);
+                                }
+                              },
+                              color: state is! LoginLoadingState
+                                  ? mainColor
+                                  : Colors.grey,
+                              child: state is! LoginLoadingState
+                                  ? Text(
+                                      "LOGIN",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    )
+                                  : Lottie.asset(
+                                      "assets/animation/loading.json",
+                                      fit: BoxFit.cover,
+                                      width: 75,
+                                    ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Container(
