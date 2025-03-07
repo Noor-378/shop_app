@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/screens/login_screen/cubit/login_cubit.dart';
 import 'package:shop_app/screens/login_screen/cubit/login_state.dart';
 import 'package:shop_app/screens/register_screen/register_screen.dart';
@@ -21,12 +22,28 @@ class LoginScreen extends StatelessWidget {
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if(state is LoginSuccessState){
-            if(state.loginModel!.status){
+          if (state is LoginSuccessState) {
+            if (state.loginModel!.status) {
               print(state.loginModel!.message);
-              print(state.loginModel!.data!.token);
-            }else{
-              print(state.loginModel!.message);
+              Fluttertoast.showToast(
+                msg: "${state.loginModel!.message}",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16,
+              );
+            } else {
+              Fluttertoast.showToast(
+                msg: "${state.loginModel!.message}",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16,
+              );
             }
           }
         },
@@ -139,7 +156,7 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(top: 46),
                       width: double.infinity,
-                      height: 75,
+                      height: 100,
                       decoration: BoxDecoration(
                         color: mainColor,
                         borderRadius: BorderRadius.only(
