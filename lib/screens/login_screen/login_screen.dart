@@ -8,7 +8,6 @@ import 'package:shop_app/shared/components/custom_form_field.dart';
 import 'package:shop_app/shared/components/custom_text_button.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/styles/colors.dart';
-import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -21,7 +20,16 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is LoginSuccessState){
+            if(state.loginModel!.status){
+              print(state.loginModel!.message);
+              print(state.loginModel!.data!.token);
+            }else{
+              print(state.loginModel!.message);
+            }
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: true,

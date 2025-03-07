@@ -8,6 +8,7 @@ import 'package:shop_app/shared/network/remote/dio_helper.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
   static LoginCubit get(context) => BlocProvider.of(context);
+  LoginModel? loginModel;
   void userLogin({
     required String email,
     required String password,
@@ -20,10 +21,8 @@ class LoginCubit extends Cubit<LoginState> {
         "password": password,
       },
     ).then((value) {
-      print(value.data);
-      print(value);
-      UserData.fromJson(value.data);
-      emit(LoginSuccessState());
+      loginModel = LoginModel.fromJson(value.data);
+      emit(LoginSuccessState(loginModel: loginModel));
     }).catchError((error) {
       print(error.toString());
       emit(
