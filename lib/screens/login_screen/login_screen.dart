@@ -24,7 +24,6 @@ class LoginScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is LoginSuccessState) {
             if (state.loginModel!.status) {
-              print(state.loginModel!.message);
               Fluttertoast.showToast(
                 msg: "${state.loginModel!.message}",
                 toastLength: Toast.LENGTH_SHORT,
