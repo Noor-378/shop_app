@@ -18,4 +18,6 @@ class LoginErrorState extends LoginState {
   );
 }
 
-class ChangePasswordVisibilityState extends LoginState {}
+class ChangePasswordVisibilityState extends LoginState {
+  
+}
