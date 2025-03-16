@@ -4,7 +4,6 @@ import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/observer/observer.dart';
 import 'package:shop_app/shared/network/remote/dio_helper.dart';
-import 'package:shop_app/shared/styles/themes/dark_theme.dart';
 import 'package:shop_app/shared/styles/themes/light_theme.dart';
 
 void main() {
