@@ -11,7 +11,9 @@ class AppCubit extends Cubit<AppStates> {
         MaterialPageRoute(
           builder: (context) => widget,
         ),
-      ); void navigateAndFinish(context, Widget widget) => Navigator.pushAndRemoveUntil(
+      );
+  void navigateAndFinish(context, Widget widget) =>
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) => widget,

@@ -90,7 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         duration: Duration(
                           milliseconds: 750,
                         ),
-                        curve: Curves.ease,
+                        curve: Curves.fastLinearToSlowEaseIn,
                       );
                     }
                   },
