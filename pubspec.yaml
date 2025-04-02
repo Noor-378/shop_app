@@ -28,7 +28,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/animation/loading.json
 
 fonts:
   - family: Popping

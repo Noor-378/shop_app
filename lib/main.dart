@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/observer/observer.dart';
@@ -12,12 +13,15 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-
-  runApp(MyApp());
+  bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
+  runApp(MyApp(
+    onBoarding: onBoarding,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key,required this.onBoarding});
+  final bool onBoarding;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         // darkTheme: darkTheme,
-        home: OnBoardingScreen(),
+        home: onBoarding ? LoginScreen(): OnBoardingScreen()
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/shared/components/build_boarding_item.dart';
 import 'package:shop_app/shared/components/custom_text_button.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
+import 'package:shop_app/shared/network/local/cache_helper.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,6 +18,17 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
   bool isLast = false;
+  void submite() {
+    CacheHelper.saveData(key: "onBoarding", value: true).then((value) {
+      if (value!) {
+        AppCubit.get(context).navigateAndFinish(
+          context,
+          LoginScreen(),
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +38,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           CustomTextButton(
             onPressed: () {
               if (isLast) {
-                AppCubit.get(context).navigateAndFinish(
-                  context,
-                  LoginScreen(),
-                );
+                submite();
               } else {
                 boardController.jumpToPage(boarding.length - 1);
               }
@@ -81,10 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 CustomTextButton(
                   onPressed: () {
                     if (isLast) {
-                      AppCubit.get(context).navigateAndFinish(
-                        context,
-                        LoginScreen(),
-                      );
+                      submite();
                     } else {
                       boardController.nextPage(
                         duration: Duration(
