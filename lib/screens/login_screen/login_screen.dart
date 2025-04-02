@@ -7,6 +7,7 @@ import 'package:shop_app/screens/register_screen/register_screen.dart';
 import 'package:shop_app/shared/components/custom_elevated_button.dart';
 import 'package:shop_app/shared/components/custom_form_field.dart';
 import 'package:shop_app/shared/components/custom_text_button.dart';
+import 'package:shop_app/shared/components/custom_toast.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
@@ -24,24 +25,16 @@ class LoginScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is LoginSuccessState) {
             if (state.loginModel!.status) {
-              Fluttertoast.showToast(
+              CustomToast(
                 msg: "${state.loginModel!.message}",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 5,
-                backgroundColor: Colors.green,
+                color: Colors.green,
                 textColor: Colors.white,
-                fontSize: 16,
               );
             } else {
-              Fluttertoast.showToast(
+               CustomToast(
                 msg: "${state.loginModel!.message}",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 5,
-                backgroundColor: Colors.red,
+                color: Colors.red,
                 textColor: Colors.white,
-                fontSize: 16,
               );
             }
           }

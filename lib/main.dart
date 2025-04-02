@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         // darkTheme: darkTheme,
-        home: onBoarding ? LoginScreen(): OnBoardingScreen()
+        home: onBoarding ? LoginScreen(): OnBoardingScreen(),
       ),
     );
   }
