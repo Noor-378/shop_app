@@ -34,4 +34,8 @@ class CacheHelper {
     }
     return await sharedPreferences.setDouble(key, value);
   }
+
+  void clearData({required String key,}){
+    sharedPreferences.remove(key);
+  }
 }
