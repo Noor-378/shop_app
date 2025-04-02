@@ -28,13 +28,11 @@ class LoginScreen extends StatelessWidget {
               CustomToast(
                 msg: "${state.loginModel!.message}",
                 color: Colors.green,
-                textColor: Colors.white,
               );
             } else {
                CustomToast(
                 msg: "${state.loginModel!.message}",
                 color: Colors.red,
-                textColor: Colors.white,
               );
             }
           }
