@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
@@ -13,15 +14,26 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-  bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
+  bool onBoarding = CacheHelper.getData(key: "onBoarding");
+  String? token = CacheHelper.getData(key: "token");
+  late Widget widget;
+  if(onBoarding){
+    if(token != null){
+      widget = ShopLayout();
+    }else{
+      widget = LoginScreen();
+    }
+  }else{
+    widget = OnBoardingScreen();
+  }
   runApp(MyApp(
-    onBoarding: onBoarding,
+    startWidget: widget,
   ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,required this.onBoarding});
-  final bool onBoarding;
+  const MyApp({super.key,required this.startWidget});
+  final Widget startWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +48,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         // darkTheme: darkTheme,
-        home: onBoarding ? LoginScreen(): OnBoardingScreen(),
+        home: startWidget,
       ),
     );
   }

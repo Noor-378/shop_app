@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/screens/login_screen/cubit/login_cubit.dart';
 import 'package:shop_app/screens/login_screen/cubit/login_state.dart';
 import 'package:shop_app/screens/register_screen/register_screen.dart';
@@ -9,6 +10,7 @@ import 'package:shop_app/shared/components/custom_form_field.dart';
 import 'package:shop_app/shared/components/custom_text_button.dart';
 import 'package:shop_app/shared/components/custom_toast.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
+import 'package:shop_app/shared/network/local/cache_helper.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -29,8 +31,16 @@ class LoginScreen extends StatelessWidget {
                 msg: "${state.loginModel!.message}",
                 color: Colors.green,
               );
+              CacheHelper.saveData(
+                      key: "token", value: state.loginModel?.data?.token)
+                  .then((value) {
+                AppCubit.get(context).navigateAndFinish(
+                  context,
+                  ShopLayout(),
+                );
+              });
             } else {
-               CustomToast(
+              CustomToast(
                 msg: "${state.loginModel!.message}",
                 color: Colors.red,
               );
