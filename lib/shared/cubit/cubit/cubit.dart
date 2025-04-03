@@ -42,7 +42,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavState());
   }
 
-  late HomeModel homeModel;
+  HomeModel? homeModel;
 
   void getHomeData() {
     emit(LoadingHomeDataState());
