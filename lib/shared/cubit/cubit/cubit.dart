@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/categories_screen/categories_screen.dart';
+import 'package:shop_app/screens/favorites_screen/favorites_screen.dart';
+import 'package:shop_app/screens/products_screen/products_screen.dart';
+import 'package:shop_app/screens/settings_screen/settings_screen.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +26,15 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
-
   int currentIndex = 0;
+  List<Widget> bottomScreens = [
+    ProductsScreen(),
+    CategoriesScreen(),
+    FavoritesScreen(),
+    SettingsScreen(),
+  ];
+  void changeBottomNav(int index) {
+    currentIndex = index;
+    emit(ChangeBottomNavState());
+  }
 }
