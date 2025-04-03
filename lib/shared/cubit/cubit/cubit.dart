@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/screens/categories_screen/categories_screen.dart';
 import 'package:shop_app/screens/favorites_screen/favorites_screen.dart';
 import 'package:shop_app/screens/products_screen/products_screen.dart';
 import 'package:shop_app/screens/settings_screen/settings_screen.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/shared/network/end_points.dart';
+import 'package:shop_app/shared/network/remote/dio_helper.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(InitialState());
@@ -36,5 +39,18 @@ class AppCubit extends Cubit<AppStates> {
   void changeBottomNav(int index) {
     currentIndex = index;
     emit(ChangeBottomNavState());
+  }
+
+  late HomeModel homeModel;
+
+  void getHomeData() {
+    emit(LoadingHomeDataState());
+    DioHelper.getData(url: HOME).then((value) {
+      homeModel = HomeModel.fromJson(value.data);
+      emit(SuccessHomeDataState());
+    }).catchError((error) {
+      emit(ErrorHomeDataState());
+      print(error.toString());
+    });
   }
 }
