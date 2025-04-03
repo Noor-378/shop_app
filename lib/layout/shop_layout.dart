@@ -11,9 +11,9 @@ class ShopLayout extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
+        var cubit = AppCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            centerTitle: true,
             title: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -29,7 +29,8 @@ class ShopLayout extends StatelessWidget {
               ],
             ),
           ),
-          body: Placeholder(),
+          body: cubit.bottomScreens[cubit.currentIndex],
+          // bottomNavigationBar: ,
         );
       },
     );

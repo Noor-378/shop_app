@@ -32,8 +32,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,required this.startWidget});
-  final Widget startWidget;
+  const MyApp({super.key, this.startWidget});
+  final Widget? startWidget;
 
   @override
   Widget build(BuildContext context) {
