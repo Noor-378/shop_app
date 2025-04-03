@@ -7,6 +7,7 @@ ThemeData lightTheme = ThemeData(
   primarySwatch: mainColor,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
+    centerTitle: true,
     titleSpacing: 20.0,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.white,
@@ -23,7 +24,7 @@ ThemeData lightTheme = ThemeData(
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.deepOrange,
+    selectedItemColor: mainColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,
     backgroundColor: Colors.white,

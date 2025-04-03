@@ -7,6 +7,7 @@ ThemeData darkTheme = ThemeData(
   primarySwatch: mainColor,
   scaffoldBackgroundColor: darkModeBachgroundColor,
   appBarTheme: AppBarTheme(
+    centerTitle: true,
     titleSpacing: 20.0,
     backgroundColor: darkModeBachgroundColor,
     elevation: 0.0,
@@ -25,7 +26,7 @@ ThemeData darkTheme = ThemeData(
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.deepOrange,
+    selectedItemColor: mainColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,
     backgroundColor: Colors.amber,
