@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/screens/search_screen/search_screen.dart';
+import 'package:shop_app/shared/components/custom_bottom_nav_bar.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
 
@@ -14,6 +16,19 @@ class ShopLayout extends StatelessWidget {
         var cubit = AppCubit.get(context);
         return Scaffold(
           appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  cubit.navigateTo(
+                    context,
+                    SearchScreen(),
+                  );
+                },
+                icon: Icon(
+                  Icons.search_outlined,
+                ),
+              ),
+            ],
             title: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -30,38 +45,7 @@ class ShopLayout extends StatelessWidget {
             ),
           ),
           body: cubit.bottomScreens[cubit.currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: cubit.currentIndex,
-            onTap: (value) {
-              cubit.changeBottomNav(value);
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: "Home",
-                icon: Icon(
-                  Icons.home_outlined,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "Category",
-                icon: Icon(
-                  Icons.apps_rounded,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "Favorites",
-                icon: Icon(
-                  Icons.favorite_border_sharp,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "Settings",
-                icon: Icon(
-                  Icons.settings_outlined,
-                ),
-              ),
-            ],
-          ),
+          bottomNavigationBar: CustomBottomNavBar(cubit: cubit),
         );
       },
     );
