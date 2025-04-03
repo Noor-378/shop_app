@@ -12,12 +12,7 @@ class ProductsScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return AppCubit.get(context).homeModel == null
-            ? Center(
-                child: Text(
-                  "Products Screen",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              )
+            ? CircularProgressIndicator()
             : Center(
                 child: Text(
                   "Products Screen",

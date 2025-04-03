@@ -50,6 +50,7 @@ class AppCubit extends Cubit<AppStates> {
       url: HOME,
       token: token,
     ).then((value) {
+      homeModel = HomeModel.fromJson(value.data);
       emit(SuccessHomeDataState());
     }).catchError((error) {
       emit(ErrorHomeDataState());
