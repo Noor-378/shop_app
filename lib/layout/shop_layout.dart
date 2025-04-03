@@ -30,7 +30,38 @@ class ShopLayout extends StatelessWidget {
             ),
           ),
           body: cubit.bottomScreens[cubit.currentIndex],
-          // bottomNavigationBar: ,
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: cubit.currentIndex,
+            onTap: (value) {
+              cubit.changeBottomNav(value);
+            },
+            items: [
+              BottomNavigationBarItem(
+                label: "Home",
+                icon: Icon(
+                  Icons.home_outlined,
+                ),
+              ),
+              BottomNavigationBarItem(
+                label: "Category",
+                icon: Icon(
+                  Icons.apps_rounded,
+                ),
+              ),
+              BottomNavigationBarItem(
+                label: "Favorites",
+                icon: Icon(
+                  Icons.favorite_border_sharp,
+                ),
+              ),
+              BottomNavigationBarItem(
+                label: "Settings",
+                icon: Icon(
+                  Icons.settings_outlined,
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

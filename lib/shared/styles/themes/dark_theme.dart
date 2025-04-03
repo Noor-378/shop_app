@@ -25,7 +25,7 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    type: BottomNavigationBarType.fixed,
+    type: BottomNavigationBarType.shifting,
     selectedItemColor: mainColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,

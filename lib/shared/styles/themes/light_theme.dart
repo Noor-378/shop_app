@@ -23,7 +23,7 @@ ThemeData lightTheme = ThemeData(
     iconTheme: IconThemeData(color: Colors.black),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    type: BottomNavigationBarType.fixed,
+    type: BottomNavigationBarType.shifting,
     selectedItemColor: mainColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,
