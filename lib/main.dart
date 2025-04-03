@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/screens/login_screen/login_screen.dart';
 import 'package:shop_app/screens/on_boarding/on_boarding_screen.dart';
+import 'package:shop_app/shared/constants.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/observer/observer.dart';
 import 'package:shop_app/shared/network/local/cache_helper.dart';
@@ -15,7 +16,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
-  String? token = CacheHelper.getData(key: "token");
+   token = CacheHelper.getData(key: "token");
   late Widget widget;
   if(onBoarding){
     if(token != null){
