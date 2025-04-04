@@ -13,7 +13,7 @@ class ProductsScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return AppCubit.get(context).homeModel == null
-            ? CircularProgressIndicator()
+            ? Center(child: CircularProgressIndicator())
             : ProductsBuilder();
       },
     );
