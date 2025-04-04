@@ -57,4 +57,10 @@ class AppCubit extends Cubit<AppStates> {
       print(error.toString());
     });
   }
+
+  int currentBannerPage = 0;
+  void changeIndicatorColorForBanner(int index){
+    currentBannerPage = index;
+    emit(ChangeIndicatorColorForBanner());
+  }
 }
