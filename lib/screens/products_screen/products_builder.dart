@@ -7,7 +7,6 @@ import 'package:shop_app/shared/constants.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
 import 'package:shop_app/shared/styles/colors.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductsBuilder extends StatelessWidget {
   const ProductsBuilder({
