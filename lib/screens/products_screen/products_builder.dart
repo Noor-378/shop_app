@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/screens/products_screen/frist_part.dart';
+import 'package:shop_app/screens/products_screen/second_part.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
 
@@ -29,9 +30,15 @@ class ProductsBuilder extends StatelessWidget {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                children: [
-                  Text("sss"),
-                ],
+                children: List.generate(
+                  model!.data!.products.length,
+                  (index) =>
+                      // second part contain all the grid view widgets
+                      SecondPart(
+                    model: model,
+                    index: index,
+                  ),
+                ),
               ),
             ),
           ],

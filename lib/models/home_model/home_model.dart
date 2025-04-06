@@ -34,7 +34,7 @@ class ProductModel {
   dynamic price;
   dynamic oldPrice;
   dynamic discount;
-  String? image;
+  late String image;
   String? name;
   bool? inFavorites;
   bool? inCart;
