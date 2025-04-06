@@ -34,9 +34,9 @@ class ProductsBuilder extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                color: mainColor,
+                color: Colors.grey,
                 child: GridView.count(
-                  childAspectRatio: 1 / 1.2,
+                  childAspectRatio: 1 / 1.583,
                   mainAxisSpacing: 1,
                   crossAxisSpacing: 1,
                   shrinkWrap: true,
