@@ -9,4 +9,9 @@ class LoadingHomeDataState extends AppStates {}
 class SuccessHomeDataState extends AppStates {}
 
 class ErrorHomeDataState extends AppStates {}
+
 class ChangeIndicatorColorForBanner extends AppStates {}
+
+class SuccessCategoriesState extends AppStates {}
+
+class ErrorHomeCategoriesState extends AppStates {}
