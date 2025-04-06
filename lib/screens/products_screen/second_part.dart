@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
 
@@ -16,12 +15,14 @@ class SecondPart extends StatelessWidget {
     return Column(
       children: [
         Image(
-          height: 150,
-          width: 150,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          height: 200,
           image: NetworkImage(
             model!.data!.products[index].image,
           ),
         ),
+        Text("${model!.data!.products[index].name}"),
       ],
     );
   }
