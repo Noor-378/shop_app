@@ -82,11 +82,15 @@ class ThirdPart extends StatelessWidget {
                       ),
                     Spacer(),
                     IconButton(
-                      padding: EdgeInsets.all(0),
                       onPressed: () {},
-                      icon: Icon(
-                        Icons.favorite_border_outlined,
-                        size: 12,
+                      icon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor: Colors.grey,
+                        child: Icon(
+                          Icons.favorite_border_outlined,
+                          color: Colors.white,
+                          size: 17,
+                        ),
                       ),
                     ),
                   ],
