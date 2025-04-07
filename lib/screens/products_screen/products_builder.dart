@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/screens/products_screen/frist_part.dart';
 import 'package:shop_app/screens/products_screen/second_part.dart';
+import 'package:shop_app/screens/products_screen/third_part.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/cubit/states/states.dart';
-import 'package:shop_app/shared/styles/colors.dart';
 
 class ProductsBuilder extends StatelessWidget {
   const ProductsBuilder({
@@ -33,6 +33,8 @@ class ProductsBuilder extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
+              // second part contain all the categories part in the home screen
+              SecondPart(),
               Container(
                 color: Colors.grey,
                 child: GridView.count(
@@ -45,8 +47,8 @@ class ProductsBuilder extends StatelessWidget {
                   children: List.generate(
                     model!.data!.products.length,
                     (index) =>
-                        // second part contain all the grid view widgets
-                        SecondPart(
+                        // Third part contain all the grid view widgets
+                        ThirdPart(
                       model: model,
                       index: index,
                     ),
