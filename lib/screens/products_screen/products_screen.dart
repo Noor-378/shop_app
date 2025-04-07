@@ -12,9 +12,17 @@ class ProductsScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return AppCubit.get(context).homeModel == null
-            ? Center(child: CircularProgressIndicator())
-            : ProductsBuilder(model: AppCubit.get(context).homeModel,);
+        if (AppCubit.get(context).homeModel != null &&
+            AppCubit.get(context).categoriesModel != null) {
+          return ProductsBuilder(
+            model: AppCubit.get(context).homeModel,
+            categoriesModel: AppCubit.get(context).categoriesModel,
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
       },
     );
   }

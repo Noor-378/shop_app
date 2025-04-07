@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/categories_model/categories_model.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/screens/categories_screen/categories_screen.dart';
 import 'package:shop_app/screens/favorites_screen/favorites_screen.dart';
@@ -64,7 +65,20 @@ class AppCubit extends Cubit<AppStates> {
     int index,
   ) {
     currentBannerPage = index;
-    // indicatorController = index;
     emit(ChangeIndicatorColorForBanner());
+  }
+
+  CategoriesModel? categoriesModel;
+
+  void getCategories() {
+    DioHelper.getData(
+      url: CATEGORIES,
+    ).then((value) {
+      categoriesModel = CategoriesModel.fromJson(value.data);
+      emit(SuccessCategoriesState());
+    }).catchError((error) {
+      emit(ErrorCategoriesState());
+      print(error.toString());
+    });
   }
 }

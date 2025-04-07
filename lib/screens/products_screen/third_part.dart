@@ -5,7 +5,7 @@ import 'package:shop_app/shared/styles/colors.dart';
 class ThirdPart extends StatelessWidget {
   const ThirdPart({
     super.key,
-    required this.model,
+    this.model,
     required this.index,
   });
   final int index;

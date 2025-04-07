@@ -16,9 +16,7 @@ class CategoriesDataModel {
     json["data"].forEach(
       (element) {
         data.add(
-          DataModel.fromJson(
-            json["data"],
-          ),
+          DataModel.fromJson(element),
         );
       },
     );
@@ -27,11 +25,11 @@ class CategoriesDataModel {
 
 class DataModel {
   int? id;
-  String? page;
+  String? name;
   String? image;
   DataModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];
-    page = json["page"];
+    name = json["name"];
     image = json["image"];
   }
 }

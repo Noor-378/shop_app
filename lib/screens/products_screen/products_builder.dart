@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/models/categories_model/categories_model.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/screens/products_screen/frist_part.dart';
 import 'package:shop_app/screens/products_screen/second_part.dart';
@@ -11,8 +12,10 @@ class ProductsBuilder extends StatelessWidget {
   const ProductsBuilder({
     super.key,
     required this.model,
+    required this.categoriesModel,
   });
   final HomeModel? model;
+  final CategoriesModel? categoriesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class ProductsBuilder extends StatelessWidget {
         return SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 20,
@@ -33,8 +37,44 @@ class ProductsBuilder extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              // second part contain all the categories part in the home screen
-              SecondPart(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Categories",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    // second part contain all the categories part in the home screen
+                    SecondPart(
+                      categoriesModel: categoriesModel,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      "New Products",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 color: Colors.grey,
                 child: GridView.count(

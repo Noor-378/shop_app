@@ -14,4 +14,4 @@ class ChangeIndicatorColorForBanner extends AppStates {}
 
 class SuccessCategoriesState extends AppStates {}
 
-class ErrorHomeCategoriesState extends AppStates {}
+class ErrorCategoriesState extends AppStates {}
