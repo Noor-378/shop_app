@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/home_model/home_model.dart';
+import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
 class ThirdPart extends StatelessWidget {
@@ -7,9 +8,11 @@ class ThirdPart extends StatelessWidget {
     super.key,
     this.model,
     required this.index,
+    required this.cubit,
   });
   final int index;
   final HomeModel? model;
+  final AppCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +88,10 @@ class ThirdPart extends StatelessWidget {
                       onPressed: () {},
                       icon: CircleAvatar(
                         radius: 15,
-                        backgroundColor: Colors.grey,
+                        backgroundColor:
+                            cubit.favorites[model!.data!.products[index].id]!
+                                ? mainColor
+                                : Colors.grey,
                         child: Icon(
                           Icons.favorite_border_outlined,
                           color: Colors.white,

@@ -87,4 +87,19 @@ class AppCubit extends Cubit<AppStates> {
       print(error.toString());
     });
   }
+
+  void changeFavorites(int productId) {
+    DioHelper.postData(
+      url: FAVORITES,
+      data: {
+        "product_id": productId,
+      },
+      token: token,
+    ).then((value) {
+      emit(SuccessChangeFavoritesState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(ErrorChangeFavoritesState());
+    });
+  }
 }

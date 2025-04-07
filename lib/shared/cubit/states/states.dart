@@ -15,3 +15,7 @@ class ChangeIndicatorColorForBanner extends AppStates {}
 class SuccessCategoriesState extends AppStates {}
 
 class ErrorCategoriesState extends AppStates {}
+
+class SuccessChangeFavoritesState extends AppStates {}
+
+class ErrorChangeFavoritesState extends AppStates {}

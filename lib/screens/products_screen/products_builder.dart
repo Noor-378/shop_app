@@ -90,7 +90,7 @@ class ProductsBuilder extends StatelessWidget {
                         // Third part contain all the grid view widgets
                         ThirdPart(
                       model: model,
-                      index: index,
+                      index: index, cubit: cubit,
                     ),
                   ),
                 ),
