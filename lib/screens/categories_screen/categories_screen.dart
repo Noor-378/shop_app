@@ -19,8 +19,8 @@ class CategoriesScreen extends StatelessWidget {
           ),
           separatorBuilder: (context, index) => Divider(
             indent: 20,
-            color: Colors.black,
-            thickness: .3,
+            color: Colors.grey,
+            thickness: .2,
           ),
           itemCount: AppCubit.get(context).categoriesModel!.data!.data.length,
         );
@@ -43,7 +43,6 @@ class CategoriesItem extends StatelessWidget {
       child: Row(
         children: [
           Image(
-            // fit: BoxFit.cover,
             width: 100,
             height: 100,
             image: NetworkImage(
