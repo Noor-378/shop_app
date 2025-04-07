@@ -44,6 +44,7 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   HomeModel? homeModel;
+  Map<int?, bool?> favorites = {};
 
   void getHomeData() {
     emit(LoadingHomeDataState());
@@ -52,6 +53,11 @@ class AppCubit extends Cubit<AppStates> {
       token: token,
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
+      homeModel!.data!.products.forEach((element) {
+        favorites.addAll({
+          element.id: element.inFavorites,
+        });
+      });
       emit(SuccessHomeDataState());
     }).catchError((error) {
       emit(ErrorHomeDataState());
