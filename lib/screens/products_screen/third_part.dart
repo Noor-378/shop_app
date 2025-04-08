@@ -3,7 +3,7 @@ import 'package:shop_app/models/home_model/home_model.dart';
 import 'package:shop_app/shared/cubit/cubit/cubit.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
-class ThirdPart extends StatelessWidget {
+class ThirdPart extends StatelessWidget {//
   const ThirdPart({
     super.key,
     this.model,
