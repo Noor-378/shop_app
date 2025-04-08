@@ -85,9 +85,11 @@ class ThirdPart extends StatelessWidget {
                       ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        cubit.changeFavorites(model!.data!.products[index].id!);
+                      },
                       icon: CircleAvatar(
-                        radius: 15,
+                        radius: 15 ,
                         backgroundColor:
                             cubit.favorites[model!.data!.products[index].id]!
                                 ? mainColor
